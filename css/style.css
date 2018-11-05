@@ -3,7 +3,30 @@ body {
 }
 
 .container {
+  flex: 33%;
   margin: 20px;
   padding: 20px;
-  border: 1px solid purple;
+  border: 2px solid purple;
+}
+
+.container ul {
+  padding: 10px;
+  line-height: 2;
+  list-style: none;
+}
+
+.container a {
+  color: black;
+}
+
+.foo {
+  border-right: 20px solid purple;
+}
+
+.bar {
+  border-right: 20px dotted yellow;
+}
+
+.baz {
+  border-right: 20px double midnightblue;
 }

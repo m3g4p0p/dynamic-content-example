@@ -5,6 +5,7 @@ $(window).on('load popstate', function (event) {
   // Restore dynamically loaded content, or load
   // the initial content
   var state = event.originalEvent.state || {}
+  console.log('Pop state:', state)
 
   $containers.each(function () {
     $(this).load(state[this.id] || this.dataset.src)
@@ -13,11 +14,13 @@ $(window).on('load popstate', function (event) {
 
 $containers.on('click', 'a', function (event) {
   var $container = $(event.delegateTarget)
-  var state = $.extend({}, window.history.state)
+  var currentState = $.extend({}, window.history.state)
 
   // Push the updated state to the history
-  state[event.delegateTarget.id] = this.href
-  window.history.pushState(state, document.title)
-  $container.load(this.href)
+  currentState[event.delegateTarget.id] = this.pathname
+  console.log('Push state:', currentState)
+
+  window.history.pushState(currentState, document.title)
+  $container.load(this.pathname)
   event.preventDefault()
 })
